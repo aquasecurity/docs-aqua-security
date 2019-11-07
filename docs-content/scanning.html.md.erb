@@ -17,7 +17,7 @@ The image scanning process is initiated by:
 
 * Performing a `cf push`
 * A build pipeline tool like Concourse or Jenkins
-* Integrating the Aqua Management Console with either a public image registry like Docker Hub, or with a private image registry and then adding images from a repository in that registry.
+* Integrating the Aqua Management Console with either a public image registry like Docker Hub or with a private image registry and then adding images from a repository in that registry.
 * Scheduling a container scan after adding a Registry
 
 During this process, Aqua scans selected images from the registry and issues alerts when detecting vulnerabilities. You can view the scan results by clicking on a repository to view vulnerability scan details of its images, as described in the [View Scan Results](#view-results) section below.
@@ -46,14 +46,14 @@ After the scan is completed, you can view the scan results. Do the following:
 
 **Information**: This tab displays the information about scan times, env variables, etcetera.
 
-**Audit**: The audit tab is a quicklink to a filtered view of the system audit log where your logs operations are displayed.
+**Audit**: The audit tab is a quick link to a filtered view of the system audit log where your logs operations are displayed.
 
 
 ## <a id="decorator"></a>Aqua Decorator Buildpack
 
-Build-time vulnerabilty scanning of Pivotal Platform apps is achieved through the `aquasec-decorator` buildpack, which is installed by an errand upon tile installation.
-The decorator will be triggered if the `AQUA_SERVER_URL` envrionment variable is set for an app during staging.
-To function properly, the Aqua microscanner invoked by the the decorator will require you to set an `AQUA_USERNAME` and `AQUA_PASSWORD`.
+Build-time vulnerability scanning of Pivotal Platform apps is achieved through the `aquasec-decorator` buildpack, which is installed by an errand upon tile installation.
+The decorator will be triggered if the `AQUA_SERVER_URL` environment variable is set for an app during staging.
+To function properly, the Aqua microscanner invoked by the decorator will require you to set an `AQUA_USERNAME` and `AQUA_PASSWORD`.
 Aqua recommends implementing a `staging-environment-variable-group` variable so as to not impact developers current environment settings.
 In the case of a `cf push` that fails to pass the assurance policy, the JSON output of the scanner will be sent to `stdout`, giving the developer or CI a direct feedback loop. This empowers developers directly.
 
@@ -71,8 +71,8 @@ Pivotal Platform application scan results are registered within a registry using
 
 ## <a id="registry-creation"></a>Aqua Registry Creation
 
-In order to to register the scan results, an Aqua Registry listing needs to exist.
-The decorator is able to create these registries on demand, if the Aqua username used for scanning has admin permissions. If you are not scanning with an admin user account, the registry or registries need to be created beforehand either through REST API or manually.
+To register the scan results, an Aqua Registry listing needs to exist.
+The decorator can create these registries on demand if the Aqua username used for scanning has admin permissions. If you are not scanning with an admin user account, the registry or registries need to be created beforehand either through REST API or manually.
 
 | registry | static | dynamic pre-seeded | dynamic on the fly |
 |---|---|---|---|
@@ -113,7 +113,7 @@ $ for registry in $(cf curl /v2/spaces | jq -c '.resources[] | {name: "\(.entity
 ## <a id="staging-environment-variable-group"></a> Enable Aqua Decorator for All Apps
 set-staging-environment-variable-groupset-staging-environment-variable-group
 You can enable security scanning globally by using the staging environment variable group.
-All apps will use the same Aqua username and password. Environment variables set through a staging envrionment variable group will be visible to all app developers through `cf env {APP-NAME}`.
+All apps will use the same Aqua username and password. Environment variables set through a staging environment variable group will be visible to all app developers through `cf env {APP-NAME}`.
 
 Set the `AQUA_USERNAME`, `AQUA_PASSWORD`, and `AQUA_SERVER_URL` environment variables for all Pivotal Platform apps during staging by running the commands below. Additionally, if the environment uses self-signed certificates for the Aqua Server, you must set `AQUA_VERIFY_CERTS="0"`. The scanning buildpack has an option to display the scan result URL in the console. Use `AQUA_SHOW_URL="1"` to enable this feature. You must be logged in as a Pivotal Platform admin with `cf login` to set these variables globally.
 
@@ -142,7 +142,7 @@ $ cf staging-environment-variable-group
 
 ## <a id="app-env"></a> Enable Aqua Decorator for a Single App
 
-Set the `AQUA_USERNAME`, `AQUA_PASSWORD`, and `AQUA_SERVER_URL` environment variables for a single Pivotal Platform app by running the commands below. Afterward, the app will be restaged. You must log in as a developer with `cf login`.
+Set the `AQUA_USERNAME`, `AQUA_PASSWORD`, and `AQUA_SERVER_URL` environment variables for a single Pivotal Platform app by running the commands below. Afterwards, the app will be restaged. You must log in as a developer with `cf login`.
 
 <pre class="terminal">
 $ cf set-env {APP_NAME} AQUA_USERNAME administrator
