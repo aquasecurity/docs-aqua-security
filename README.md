@@ -39,8 +39,8 @@ To use Bookbinder to view your documentation, perform the following steps:
 1. On your local machine, `cd` into `docs-book` in the cloned repo.
 1. Run `bundle install` to make sure you have all the necessary gems installed.
 1. Build your documentation site with `bookbinder` in one of the two following ways:
-	* Run `bundle exec bookbinder watch` to build an interactive version of the docs and navigate to `localhost:4567/myservice/` in a browser. (It may take a moment for the site to load at first.) This builds a site from your content repo at `docs-content`, and then watches that repo to update the site if you make any changes to the repo.
-	* Run `bundle exec bookbinder bind local` to build a Rack web-app of the book. After the bind has completed, `cd` into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/myservice/` in a browser.
+    * Run `bundle exec bookbinder watch` to build an interactive version of the docs and navigate to `localhost:4567/myservice/` in a browser. (It may take a moment for the site to load at first.) This builds a site from your content repo at `docs-content`, and then watches that repo to update the site if you make any changes to the repo.
+    * Run `bundle exec bookbinder bind local` to build a Rack web-app of the book. After the bind has completed, `cd` into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/myservice/` in a browser.
 
 ### <a id='zero-to-bookbinder'></a>Zero to Bookbinder: How to Install Bookbinder and Build, View, and Edit Your Docs from Nothing
 
@@ -85,7 +85,7 @@ In Terminal window:
 
 1. Get a [Github](http://github.com) account.
 
-1. Add your RSA public key to your Github account / profile page.
+1. Add your RSA public key to your Github account/profile page.
 
     `$ cat ~/.ssh/id_rsa.pub # copy and paste this into Github profile page as new key`
 
@@ -141,7 +141,7 @@ In Terminal window:
    
 1. Browse to `localhost:4567` to view the book locally and "watch" any changes that you make to source `html.md.erb` files. As you make and save changes to the local source files for your site, you will see them in your browser after a slight delay.
 
-1. After each session of writing or revising your docs source files, commit and push them to your github repo.
+1. After each session of writing or revising your docs source files, commit and push them to your GitHub repo.
 
 ### About Subnavs of Published Tile Documentation
 
